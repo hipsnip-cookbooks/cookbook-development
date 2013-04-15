@@ -21,7 +21,7 @@ namespace :cookbook do
 
   desc "Run Strainer and then Test Kitchen - won't work on Travis"
   task :full_test do
-    Rake::Task["test"].invoke
+    Rake::Task["cookbook:test"].invoke
     puts "=== Running Test Kitchen... ==="
     Rake::Task["kitchen:all"].invoke
   end
