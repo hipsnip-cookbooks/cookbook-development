@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.required_ruby_version  = '>= 1.9.3'
 
   s.add_dependency "chef", "~> 11.4.0"
-  s.add_dependency 'foodcritic', '~> 2.0.0'
+  s.add_dependency 'foodcritic', '~> 2.1.0'
   s.add_dependency "chefspec", "~> 1.0.0.rc1"
   s.add_dependency "strainer", "~> 2.0.0"
 end
