@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name                   = 'cookbook-development'
-  s.version                = '0.1.0'
+  s.version                = '0.1.1'
   s.summary                = 'Just a way to abstract our Rake tasks for Chef Cookbooks'
   s.require_path           = 'lib'
   s.authors                = ['Adam Borocz']
