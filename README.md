@@ -1,6 +1,8 @@
-# cookbook-development 
+# HipSnip Cookbook Development
 
-Share dependencies for cookbook development at HipSnip.
+We use this as a central place to manage the Gem dependencies, Rake tasks and development readme that's shared
+between our cookbooks. See below on how to get set up for working on a HipSnip cookbook, and how to run the tests for it.
+
 
 ## What you'll need to get started
 These are generic dependencies which will be shared between cookbooks
@@ -16,7 +18,6 @@ These are mostly specific to the given cookbook repository
 From the root of the cookbook repo:
 
     bundle install
-    bundle exec berks install
     vagrant plugin install berkshelf-vagrant
 
 
