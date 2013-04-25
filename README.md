@@ -18,6 +18,7 @@ These are mostly specific to the given cookbook repository
 From the root of the cookbook repo:
 
     bundle install
+    bundle exec berks install
     vagrant plugin install berkshelf-vagrant
 
 
