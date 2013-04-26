@@ -19,7 +19,7 @@ From the root of the cookbook repo:
 
     bundle install
     bundle exec berks install
-    vagrant plugin install berkshelf-vagrant
+    vagrant plugin install vagrant-berkshelf
 
 
 ## Running tests
