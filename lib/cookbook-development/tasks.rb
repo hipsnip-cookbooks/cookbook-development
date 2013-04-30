@@ -8,17 +8,18 @@ namespace :cookbook do
   ]
 
   desc "Run Strainer to create sandbox and test cookbook"
-  task :test do
+  task :test do |t, args|
     # Figure out the names of the cookbooks available
-    cookbooks_names = get_cookbooks_names(ENV['names']).join(' ')
+    puts args.fusk.inspect
+    cookbooks_names = get_cookbooks_names(args.extras).join(' ')
     puts "=== Running Strainer... ==="
     sh "bundle exec strainer test #{cookbooks_names}"
   end
 
   desc "Run Strainer with fail-fast - for development"
-  task :dev_test do
+  task :dev_test do |t, args|
     # Figure out the names of the cookbooks available
-    cookbooks_names = get_cookbooks_names(ENV['names']).join(' ')
+    cookbooks_names = get_cookbooks_names(args.extras).join(' ')
     puts "=== Running Strainer... ==="
     sh "bundle exec strainer test --fail-fast #{cookbooks_names}"
   end
@@ -72,16 +73,11 @@ def cookbook_files
   end
 end
 
-def get_cookbooks_names(env_names)
-  cookbooks_names = []
-  if env_names
-    cookbooks_names = env_names.split(',')
-  elsif !cookbook_repo?
-    cookbooks_names = Dir.glob(File.join('cookbooks','*')).map do |path|
-      path.split('/')[1]
-    end
+def get_cookbooks_names(names)
+  if names && (names.size > 0) then names
+  elsif !cookbook_repo? then Dir['cookbooks/*'].map{|p| File.basename(p)}
+  else []
   end
-  cookbooks_names
 end
 
 def cookbook_repo?
