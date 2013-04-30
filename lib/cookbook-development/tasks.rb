@@ -8,15 +8,20 @@ namespace :cookbook do
   ]
 
   desc "Run Strainer to create sandbox and test cookbook"
-  task :test do
+  task :test do |t, args|
+    # Figure out the names of the cookbooks available
+    puts args.fusk.inspect
+    cookbooks_names = get_cookbooks_names(args.extras).join(' ')
     puts "=== Running Strainer... ==="
-    sh "bundle exec strainer test"
+    sh "bundle exec strainer test #{cookbooks_names}"
   end
 
   desc "Run Strainer with fail-fast - for development"
-  task :dev_test do
+  task :dev_test do |t, args|
+    # Figure out the names of the cookbooks available
+    cookbooks_names = get_cookbooks_names(args.extras).join(' ')
     puts "=== Running Strainer... ==="
-    sh "bundle exec strainer test --fail-fast"
+    sh "bundle exec strainer test --fail-fast #{cookbooks_names}"
   end
 
   desc "Run Strainer and then Test Kitchen - won't work on Travis"
@@ -67,3 +72,15 @@ def cookbook_files
     end
   end
 end
+
+def get_cookbooks_names(names)
+  if names && (names.size > 0) then names
+  elsif !cookbook_repo? then Dir['cookbooks/*'].map{|p| File.basename(p)}
+  else []
+  end
+end
+
+def cookbook_repo?
+  cookbook_repo ||= File.exists?('metadata.rb')
+end
+
