@@ -10,7 +10,6 @@ namespace :cookbook do
   desc "Run Strainer to create sandbox and test cookbook"
   task :test do |t, args|
     # Figure out the names of the cookbooks available
-    puts args.fusk.inspect
     cookbooks_names = get_cookbooks_names(args.extras).join(' ')
     puts "=== Running Strainer... ==="
     sh "bundle exec strainer test #{cookbooks_names}"
