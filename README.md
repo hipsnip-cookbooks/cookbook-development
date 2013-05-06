@@ -9,7 +9,7 @@ These are generic dependencies which will be shared between cookbooks
 
 * Ruby version manager of your choice ([RVM](https://rvm.io/) or [Rbenv](https://github.com/sstephenson/rbenv)). If you don't use any of those, then just make sure your Ruby version matches the one defined in `.ruby-version`.
 * [Bundler](http://gembundler.com/) - `gem install bundler`
-* [Vagrant](http://www.vagrantup.com/) (> 1.1.0) - download [here](http://downloads.vagrantup.com/)
+* [Vagrant](http://www.vagrantup.com/) (> 1.2.1) - download [here](http://downloads.vagrantup.com/)
 
 
 ## Getting cookbook dependencies
