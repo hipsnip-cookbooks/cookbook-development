@@ -1,4 +1,5 @@
 require 'fileutils'
+require 'tmpdir'
 
 namespace :cookbook do
   # Paths to exclude from the bundle when publishing
