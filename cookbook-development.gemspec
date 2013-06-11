@@ -11,6 +11,6 @@ Gem::Specification.new do |s|
 
   s.add_dependency "chef", "~> 11.4.4"
   s.add_dependency 'foodcritic', '~> 2.1.0'
-  s.add_dependency "chefspec", "~> 1.1.0"
-  s.add_dependency "strainer", "~> 2.0.0"
+  s.add_dependency "chefspec", "~> 1.3.1"
+  s.add_dependency "strainer", "~> 2.1.0"
 end
