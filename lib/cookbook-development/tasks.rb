@@ -3,10 +3,14 @@ require 'tmpdir'
 
 namespace :cookbook do
   # Paths to exclude from the bundle when publishing
-  EXCLUDE_PATHS = [
-    ".git", ".gitignore", ".rvmrc", ".ruby-version", ".travis.yml", ".kitchen.yml", "Gemfile",
-    "Gemfile.lock", "Berksfile", "Berksfile.lock", "Strainerfile", "spec", "test", "Rakefile"
-  ]
+  if ::File.exists?(".chefignore")
+    EXCLUDE_PATHS = IO.readlines('.chefignore').map{ |l| l.strip }
+  else
+    EXCLUDE_PATHS = [
+      ".git", ".gitignore", ".rvmrc", ".ruby-version", ".travis.yml", ".kitchen.yml", "Gemfile",
+      "Gemfile.lock", "Berksfile", "Berksfile.lock", "Strainerfile", "spec", "test", "Rakefile"
+    ]
+  end
 
   desc "Run Strainer to create sandbox and test cookbook"
   task :test do |t, args|
